@@ -212,6 +212,9 @@ oddlength([Head1, Head2 | Tail]) :-
     oddlength(Tail).
 
 % queries- 
+% ?- evenlength([a,b,c,d]).  -- Expected: true
+% ?- oddlength([1,2,3,4]).    ---Expected: false
+% ?- oddlength([x]).   --- Expected: true
 
 % --- Q13: Max in List ---------------------------------------------------------
 
@@ -221,6 +224,9 @@ maxlist([Head|Tail], Max) :-
     (Head > TempMax -> Max = Head ; Max = TempMax).
     
 % queries- 
+% ?- maxlist([3, 5, 2, 9, 1], Max).   --- Expected: Max = 9
+% ?- maxlist([3, 5, 2, 9, 1], 9).  ---Check if a given value is the maximum ,Expected: true
+
 
 % --- Q14: Insert at Nth Position ---------------------------------------------------------
 
@@ -231,6 +237,22 @@ insert(Element, Position, [Head|Tail], [Head|ResultTail]) :-
     insert(Element, NewPos, Tail, ResultTail).
 
 % queries- 
+% Insert at the beginning
+% ?- insert(a, 1, [b,c,d], Result).
+% Expected: Result = [a,b,c,d]
+
+% Insert in the middle
+% ?- insert(x, 3, [1,2,3,4], Result).
+% Expected: Result = [1,2,x,3,4]
+
+% Insert at the end
+% ?- insert(9, 5, [1,2,3,4], Result).
+% Expected: Result = [1,2,3,4,9]
+
+% Check if a given result is correct
+% ?- insert(7, 2, [1,2,3], [1,7,2,3]).
+% Expected: true
+
 
 % --- Q15: Delete Nth Element ---------------------------------------------------------
 
@@ -241,6 +263,25 @@ delete(N, Pos, [H|T], [H|R]) :-
     delete(N, Pos1, T, R).
 
 % queries- 
+% Delete the first element
+% ?- delete(_, 1, [a,b,c,d], Result).
+% Expected: Result = [b,c,d]
+
+% Delete the third element
+% ?- delete(_, 3, [1,2,3,4,5], Result).
+% Expected: Result = [1,2,4,5]
+
+% Delete the last element
+% ?- delete(_, 4, [x,y,z,w], Result).
+% Expected: Result = [x,y,z]
+
+% Check if a given result is correct
+% ?- delete(_, 2, [10,20,30], [10,30]).
+% Expected: true
+
+% Using a variable to get the deleted element
+% ?- delete(Element, 2, [a,b,c], Result).
+% Expected: Element = b, Result = [a,c]
 
 
 
